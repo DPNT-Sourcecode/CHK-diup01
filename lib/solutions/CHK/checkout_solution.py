@@ -1,5 +1,3 @@
-
-
 # noinspection PyUnusedLocal
 # skus = unicode string
 
@@ -19,7 +17,13 @@ def checkout(skus):
     if not valid_skus(skus):
         return -1
     quantities = {sku: skus.count(sku) for sku in skus}
-    normal_quantities = {sku: quantities.get(sku)}
-    total = sum(quantities.get(sku, 0) * prices.get(sku, 0) for sku in skus)
+    normal_quantities = {sku: quantities.get(sku) % offer_multiples.get(sku,
+                                                                        1)
+                         for sku in skus}
+    non_offer_total = sum(
+        normal_quantities.get(sku, 0) * prices.get(sku, 0) for sku
+        in skus)
+    offer_quantities = {sku: quantities.get(sku)}
     return total
+
 
