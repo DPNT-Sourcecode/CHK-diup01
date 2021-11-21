@@ -17,15 +17,13 @@ def checkout(skus):
     if not valid_skus(skus):
         return -1
 
-    itemlist = ''
+    items = ''
     for sku in skus:
         if sku.isnumeric():
-            
+            items = items.join('', items)
+        else:
+            items = items.join('|', items)
 
+    
 
-    total = sum(sku * price for sku, price in prices.items())
     return total
-
-
-
-
