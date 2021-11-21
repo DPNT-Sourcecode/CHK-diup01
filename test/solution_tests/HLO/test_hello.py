@@ -4,4 +4,4 @@ class TestHello:
 
     def test_hello(self):
         expected = hello_solution.hello('friend')
-        assert expected == 'Hello friend'
+        assert expected == 'Hello, World!'
