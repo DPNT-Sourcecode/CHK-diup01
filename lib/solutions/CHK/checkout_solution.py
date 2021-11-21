@@ -16,21 +16,22 @@ def valid_skus(skus):
 def checkout(skus):
     if not valid_skus(skus):
         return -1
-    item_list = get_itemlist(skus)
+    item_list = get_item_list(skus)
     total = sum(item * prices.get(item, 0) for item in item_list)
     return total
 
 
-def get_itemlist(skus):
+def get_item_list(skus):
     items = ''
     for sku in skus:
         if sku.isnumeric():
             items += sku
         else:
             items += f'{sku}|'
+    items = items[0:-1]
+    item_list = items.split('|')
+    return item_list
 
-    itemlist = items.split('|')
-    return itemlist
 
 
 

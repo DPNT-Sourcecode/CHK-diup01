@@ -3,9 +3,9 @@ from solutions.CHK import checkout_solution
 class TestCheckout:
 
     def test_checkout(self):
-        skus = 'ABD'
-        expected = 95
-        assert 1==1
+        skus = 'A2BD'
+        expected = 110
+        assert expected == checkout_solution.checkout(skus)
 
     def test_valid_skus(self):
         assert checkout_solution.valid_skus('A2BC')
@@ -16,5 +16,6 @@ class TestCheckout:
     def test_get_item_list(self):
         skus = 'C3A2B'
         expected = ['C', '3A', '2B']
-        assert expected == checkout_solution.get_itemlist(skus)
+        assert expected == checkout_solution.get_item_list(skus)
+
 
