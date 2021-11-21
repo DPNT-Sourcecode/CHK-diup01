@@ -9,3 +9,7 @@ class TestCheckout:
 
     def test_valid_skus(self):
         assert checkout_solution.valid_skus('A2BC')
+
+    def test_invalid_skus(self):
+        assert checkout_solution.valid_skus('invalid')==False
+
