@@ -4,7 +4,7 @@
 # skus = unicode string
 
 prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15}
-
+offer_prices{'A': 130, 'B': 45}
 
 def valid_skus(skus):
     for sku in skus:
@@ -19,10 +19,3 @@ def checkout(skus):
     quantities = {sku: skus.count(sku) for sku in skus}
     total = sum(quantities.get(sku, 0) * prices.get(sku, 0) for sku in skus)
     return total
-
-
-
-
-
-
-

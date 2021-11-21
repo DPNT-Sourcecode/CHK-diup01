@@ -18,8 +18,3 @@ class TestCheckout:
 
     def test_invalid_skus(self):
         assert checkout_solution.valid_skus('invalid') == False
-
-
-
-
-
