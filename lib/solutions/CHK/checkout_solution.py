@@ -28,9 +28,3 @@ def checkout(skus):
                                                                       0) for
                       sku in offer_multiples)
     return non_offer_total + offer_total
-
-
-
-
-
-
