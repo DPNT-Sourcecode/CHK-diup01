@@ -3,7 +3,7 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 
-prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15}
+prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, '3A': 130, '2B': 45}
 
 
 def valid_skus(skus):
@@ -16,14 +16,20 @@ def valid_skus(skus):
 def checkout(skus):
     if not valid_skus(skus):
         return -1
+    item_list = get_itemlist(skus)
+    total = sum(item * prices.get(item, 0) for item in item_list)
+    return total
 
-    items = ''
+
+def get_itemlist(skus):
     for sku in skus:
-        if sku.isnumeric():
+        if not items:
+            items = sku
+        elif sku.isnumeric():
             items = items.join('', items)
         else:
             items = items.join('|', items)
 
-    
+    itemlist = items.split('|')
+    return itemlist
 
-    return total
