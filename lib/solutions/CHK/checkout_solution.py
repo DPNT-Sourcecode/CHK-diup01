@@ -21,13 +21,14 @@ def checkout(skus):
         sku]) if sku in offer_multiples else quantities[sku] for sku in skus}
     non_offer_total = sum(
         normal_quantities.get(sku, 0) * prices.get(sku, 0) for sku
-        in skus)
+        in normal_quantities)
     offer_quantities = {sku: quantities.get(sku) // offer_multiples.get(
         sku) for sku in offer_multiples}
     offer_total = sum(offer_quantities.get(sku, 0) * offer_prices.get(sku,
                                                                       0) for
                       sku in offer_multiples)
     return non_offer_total + offer_total
+
 
 
 
