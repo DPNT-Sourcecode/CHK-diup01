@@ -22,16 +22,15 @@ def checkout(skus):
 
 
 def get_itemlist(skus):
-    items = None
+    items = ''
     for sku in skus:
-        if not items:
-            items = sku
-        elif sku.isnumeric():
-            items = items.join(['', sku])
+        if sku.isnumeric():
+            items += sku
         else:
-            items = items.join(['|', sku])
+            items += f'{sku}|'
 
     itemlist = items.split('|')
     return itemlist
+
 
 
