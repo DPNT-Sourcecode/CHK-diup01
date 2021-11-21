@@ -1,5 +1,6 @@
 from solutions.CHK import checkout_solution
 
+
 class TestCheckout:
 
     def test_checkout(self):
@@ -17,5 +18,6 @@ class TestCheckout:
         skus = 'C3A2B'
         expected = ['C', '3A', '2B']
         assert expected == checkout_solution.get_item_list(skus)
+
 
 
