@@ -16,8 +16,10 @@ def valid_skus(skus):
 def checkout(skus):
     if not valid_skus(skus):
         return -1
-    total = sum(prices.get(sku, 0) for sku in skus)
+    quantities = {sku: skus.count(sku) for sku in skus}
+    total = sum(quantities.get(sku, 0) * prices.get(sku, 0) for sku in skus)
     return total
+
 
 
 
