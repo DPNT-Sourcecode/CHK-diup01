@@ -17,10 +17,10 @@ prices = {'A': [(5, 40), (3, 130 / 3), (1, 50)],
           'N': [(1, 40)],
           'O': [(1, 10)],
           'P': [(5, 40), (1, 50)],
-          'Q': [(3, 80/3), (1, 30)],
+          'Q': [(3, 80 / 3), (1, 30)],
           'R': [(1, 50)],
-          'U': [(4, 120/4), (1, 40)],
-          'V': [(3, 130/3), (2, 45), (1, 50)],
+          'U': [(4, 120 / 4), (1, 40)],
+          'V': [(3, 130 / 3), (2, 45), (1, 50)],
           'W': [(1, 20)]
           }
 group1 = {'S': 20, 'T': 20, 'X': 17, 'Y': 20, 'Z': 21}
@@ -60,7 +60,14 @@ def calc_price(sku: str, quantity: int) -> float:
 
 
 def extract_groups(quantities):
-    grouped
+    grouped = {sku: quantities[sku] for sku in quantities if sku in groups}
+    non_grouped = {sku: quantities[sku] for sku in quantities if sku not in
+                   groups}
+    return non_grouped, grouped
+
+
+def calc_group_price(group_skus):
+    
 
 
 def checkout(skus):
@@ -69,8 +76,10 @@ def checkout(skus):
     quantities = {sku: skus.count(sku) for sku in skus}
     quantities = remove_freebies(quantities)
     quantities, group_skus = extract_groups(quantities)
-    total = sum(
+    non_group_total = sum(
         calc_price(sku, quantity) for sku, quantity in quantities.items())
-    return total
+    group_total = calc_group_price(group_skus)
+    return non_group_total
+
 
 
