@@ -69,4 +69,3 @@ def checkout(skus):
     total = sum(
         calc_price(sku, quantity) for sku, quantity in quantities.items())
     return total
-
