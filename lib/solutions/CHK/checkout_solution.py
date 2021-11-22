@@ -12,7 +12,7 @@ prices = {'A': [(5, 40), (3, 130 / 3), (1, 50)],
           'H': [(10, 8), (5, 9), (1, 10)],
           'I': [(1, 35)],
           'J': [(1, 60)],
-          'K': [(2, 75), (1, 80)],
+          'K': [(2, 60), (1, 70)],
           'L': [(1, 90)],
           'M': [(1, 15)],
           'N': [(1, 40)],
@@ -90,6 +90,7 @@ def checkout(skus: str) -> float:
         calc_price(sku, quantity) for sku, quantity in quantities.items())
     group_total = calc_group_price(group_skus)
     return non_group_total + group_total
+
 
 
 

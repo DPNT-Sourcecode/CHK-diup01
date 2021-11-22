@@ -64,12 +64,12 @@ class TestCheckout:
 
     def test_k(self):
         skus = 'K'
-        expected = 80
+        expected = 70
         assert expected == checkout(skus)
 
     def test_k_3(self):
         skus = 3 * 'K'
-        expected = 150 + 80
+        expected = 120 + 70
         assert expected == checkout(skus)
 
     def test_n(self):
@@ -122,4 +122,8 @@ class TestCheckout:
         expected = 50 + 80 + 45 + 17
         assert expected == checkout(skus)
 
-    def
+    def test_combo(self):
+        skus = 'ABCDEFGHIJKLMNOPQRSTUVW'
+        expected = 795
+        assert expected == checkout(skus)
+
