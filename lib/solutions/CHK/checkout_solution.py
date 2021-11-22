@@ -1,5 +1,6 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
+from typing import Tuple
 
 prices = {'A': [(5, 40), (3, 130 / 3), (1, 50)],
           'B': [(2, 45 / 2), (1, 30)],
@@ -60,23 +61,26 @@ def calc_price(sku: str, quantity: int) -> float:
     return price
 
 
-def extract_groups(skus):
+def extract_groups(skus: str) -> Tuple[]:
     grouped = [sku for sku in skus if sku in group]
     non_grouped = [sku for sku in skus if sku not in group]
     return non_grouped, grouped
 
 
-def calc_group_price(group_skus):
+def calc_group_price(group_skus: str) -> float:
     sort_order = ''.join(x[0] for _, x in enumerate(group_unit_prices))
-    sorted_group_skus = 
-    quantities = {sku: group_skus.count(sku) for sku in group_skus}
+    sorted_group_skus = ''.join(sorted(group_skus, key=lambda word: [
+        sort_order.index(c) for c in word]))
+    quantity = len(sorted_group_skus)
+    group_count = quantity // group_multiple
+    remainder = quantity % group_multiple
+    remainder_skus = sorted_group_skus[:remainder]
+    remainder_price = sum(group_unit_prices[sku] for sku in remainder_skus)
+    groups_price = group_count * group_price
+    return groups_price + remainder_price
 
-    sorted_group_skus = dict(sorted(quantities.items(), key=lambda item:
-                             item[1]))
 
-
-
-def checkout(skus):
+def checkout(skus: str) -> float:
     if not valid_skus(skus):
         return -1
     skus, group_skus = extract_groups(skus)
@@ -86,5 +90,6 @@ def checkout(skus):
         calc_price(sku, quantity) for sku, quantity in quantities.items())
     group_total = calc_group_price(group_skus)
     return non_group_total + group_total
+
 
 
