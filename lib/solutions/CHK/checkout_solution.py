@@ -68,6 +68,7 @@ def extract_groups(skus):
 
 def calc_group_price(group_skus):
     sort_order = ''.join(x[0] for _, x in enumerate(group_unit_prices))
+    sorted_group_skus = 
     quantities = {sku: group_skus.count(sku) for sku in group_skus}
 
     sorted_group_skus = dict(sorted(quantities.items(), key=lambda item:
@@ -85,4 +86,5 @@ def checkout(skus):
         calc_price(sku, quantity) for sku, quantity in quantities.items())
     group_total = calc_group_price(group_skus)
     return non_group_total + group_total
+
 
