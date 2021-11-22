@@ -1,6 +1,6 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
-from typing import Tuple
+from typing import Tuple, List
 
 prices = {'A': [(5, 40), (3, 130 / 3), (1, 50)],
           'B': [(2, 45 / 2), (1, 30)],
@@ -34,12 +34,12 @@ freebie_multiples = {'E': 2, 'N': 3, 'R': 3}
 
 def valid_skus(skus):
     for sku in skus:
-        if sku not in prices:
+        if sku not in prices and sku not in group:
             return False
     return True
 
 
-def remove_freebies(quantities):
+def remove_freebies(quantities: dict) -> dict:
     free_skus = {freebies[sku]: quantities.get(sku, 0) // freebie_multiples[
         sku] for sku in freebies}
     result = {sku: quantities[sku] - free_skus.get(sku, 0) for sku in
@@ -61,7 +61,7 @@ def calc_price(sku: str, quantity: int) -> float:
     return price
 
 
-def extract_groups(skus: str) -> Tuple[]:
+def extract_groups(skus: str) -> Tuple[List, List]:
     grouped = [sku for sku in skus if sku in group]
     non_grouped = [sku for sku in skus if sku not in group]
     return non_grouped, grouped
@@ -90,6 +90,7 @@ def checkout(skus: str) -> float:
         calc_price(sku, quantity) for sku, quantity in quantities.items())
     group_total = calc_group_price(group_skus)
     return non_group_total + group_total
+
 
 
 
