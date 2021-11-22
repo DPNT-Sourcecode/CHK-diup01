@@ -43,6 +43,3 @@ def checkout(skus):
     quantities = remove_freebies(quantities)
     total = sum(calc_price(sku, quantity) for sku, quantity in quantities.items())
     return total
-
-
-
