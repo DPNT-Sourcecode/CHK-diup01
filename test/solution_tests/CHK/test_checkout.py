@@ -106,3 +106,14 @@ class TestCheckout:
         skus = 17 * 'V'
         expected = 5 * 130 + 90
         assert expected == checkout(skus)
+
+    def test_group_exact(self):
+        skus = 'PQQQSYZ'
+        expected = 50 + 80 + 45
+        assert expected == checkout(skus)
+
+    def test_group_remainder(self):
+        skus = 'PQQQSXZZ'
+        expected = 50 + 80 + 45 + 17
+        assert expected == checkout(skus)
+

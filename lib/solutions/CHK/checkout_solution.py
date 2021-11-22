@@ -19,15 +19,13 @@ prices = {'A': [(5, 40), (3, 130 / 3), (1, 50)],
           'P': [(5, 40), (1, 50)],
           'Q': [(3, 80/3), (1, 30)],
           'R': [(1, 50)],
-          'S': [(1, 30)],
-          'T': [(1, 20)],
           'U': [(4, 120/4), (1, 40)],
           'V': [(3, 130/3), (2, 45), (1, 50)],
-          'W': [(1, 20)],
-          'X': [(1, 90)],
-          'Y': [(1, 10)],
-          'Z': [(1, 50)]
+          'W': [(1, 20)]
           }
+group1 = {'S': 20, 'T': 20, 'X': 17, 'Y': 20, 'Z': 21}
+groups = {'group1': group1}
+group_prices = {'group1': (3, 15)}
 freebies = {'E': 'B', 'N': 'M', 'R': 'Q'}
 freebie_multiples = {'E': 2, 'N': 3, 'R': 3}
 
@@ -69,3 +67,4 @@ def checkout(skus):
     total = sum(
         calc_price(sku, quantity) for sku, quantity in quantities.items())
     return total
+
