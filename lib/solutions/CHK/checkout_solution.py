@@ -84,4 +84,3 @@ def checkout(skus):
         calc_price(sku, quantity) for sku, quantity in quantities.items())
     group_total = calc_group_price(group_skus)
     return non_group_total + group_total
-
