@@ -1,7 +1,7 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 
-prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15}
+prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
 offer_prices = {'A': 130, 'B': 45}
 offer_multiples = {'A': 3, 'B': 2}
 freebies = {'E': 'B'}
@@ -18,8 +18,9 @@ def valid_skus(skus):
 def remove_freebies(quantities):
     free_skus = {freebies[sku]: quantities[sku] // freebie_multiples[sku] for
                  sku in freebies}
-    
-
+    result = {sku: quantities[sku] - free_skus.get(sku, 0) for sku in
+              quantities}
+    return result
 
 def checkout(skus):
     if not valid_skus(skus):
@@ -37,4 +38,5 @@ def checkout(skus):
                                                                       0) for
                       sku in offer_multiples)
     return non_offer_total + offer_total
+
 
