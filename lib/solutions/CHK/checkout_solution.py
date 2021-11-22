@@ -16,8 +16,8 @@ def valid_skus(skus):
 
 
 def remove_freebies(quantities):
-    free_skus = {freebies[sku]: quantities[sku] // freebie_multiples[sku] for
-                 sku in freebies}
+    free_skus = {freebies[sku]: quantities.get(sku, 0) // freebie_multiples[
+        sku] for sku in freebies}
     result = {sku: quantities[sku] - free_skus.get(sku, 0) for sku in
               quantities}
     return result
@@ -38,5 +38,6 @@ def checkout(skus):
                                                                       0) for
                       sku in offer_multiples)
     return non_offer_total + offer_total
+
 
 
