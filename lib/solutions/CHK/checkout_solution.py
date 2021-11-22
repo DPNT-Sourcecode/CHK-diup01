@@ -1,9 +1,8 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 
-prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
-offer_prices = {'A': 130, 'B': 45}
-offer_multiples = {'A': 3, 'B': 2}
+prices = {'A': [(5, 40), (3, 130 / 3), (1, 50)], 'B': [(2, 45), (1, 30)],
+          'C': [(1, 20)], 'D': [(1, 15)], 'E': [(1, 40)]}
 freebies = {'E': 'B'}
 freebie_multiples = {'E': 2}
 
@@ -23,19 +22,14 @@ def remove_freebies(quantities):
     return result
 
 
+def calc_price(sku: str, quantity: int) -> float:
+    
+
 def checkout(skus):
     if not valid_skus(skus):
         return -1
     quantities = {sku: skus.count(sku) for sku in skus}
     quantities = remove_freebies(quantities)
-    normal_quantities = {sku: (quantities[sku] % offer_multiples[
-        sku]) if sku in offer_multiples else quantities[sku] for sku in skus}
-    non_offer_total = sum(
-        normal_quantities.get(sku, 0) * prices.get(sku, 0) for sku
-        in normal_quantities)
-    offer_quantities = {sku: quantities.get(sku, 0) // offer_multiples.get(
-        sku) for sku in offer_multiples}
-    offer_total = sum(offer_quantities.get(sku, 0) * offer_prices.get(sku,
-                                                                      0) for
-                      sku in offer_multiples)
-    return non_offer_total + offer_total
+    total = sum(calc_price(sku, quantity) for sku, quantity in quantities.items())
+    return sum
+
