@@ -50,4 +50,6 @@ class TestCheckout:
         assert expected == checkout_solution.checkout(skus)
 
     def test_combo1(self):
-        skus = 'HHHHHHHHHH'
+        skus = 10 * 'H'
+        assert 
+
