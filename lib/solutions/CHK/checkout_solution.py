@@ -23,7 +23,16 @@ def remove_freebies(quantities):
 
 
 def calc_price(sku: str, quantity: int) -> float:
-    
+    price = 0
+    remainder = quantity
+    for multiple, unit_price in enumerate(prices[sku]):
+        if unit_price == 1:
+            price += remainder * unit_price
+        else:
+            price += (remainder // multiple) * multiple * unit_price
+            remainder = remainder % multiple
+    return price
+
 
 def checkout(skus):
     if not valid_skus(skus):
@@ -32,4 +41,5 @@ def checkout(skus):
     quantities = remove_freebies(quantities)
     total = sum(calc_price(sku, quantity) for sku, quantity in quantities.items())
     return sum
+
 
