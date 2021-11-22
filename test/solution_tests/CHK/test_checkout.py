@@ -116,4 +116,3 @@ class TestCheckout:
         skus = 'PQQQSXZZ'
         expected = 50 + 80 + 45 + 17
         assert expected == checkout(skus)
-
