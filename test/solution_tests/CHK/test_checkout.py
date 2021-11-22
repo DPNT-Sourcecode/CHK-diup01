@@ -33,3 +33,19 @@ class TestCheckout:
         skus = 'DEEEBB'
         expected = 15 + 3 * 40 + 30
         assert expected == checkout_solution.checkout(skus)
+
+    def test_3_for_2_exact(self):
+        skus = 'FFFFFFD'
+        expected = 55
+        assert expected == checkout_solution.checkout(skus)
+
+    def test_3_for_2_remainder_2(self):
+        skus = 'FFFFFD'
+        expected = 55
+        assert expected == checkout_solution.checkout(skus)
+
+    def test_3_for_2_remainder_1(self):
+        skus = 'FFFFD'
+        expected = 45
+        assert expected == checkout_solution.checkout(skus)
+
