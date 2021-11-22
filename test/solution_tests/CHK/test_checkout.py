@@ -49,3 +49,5 @@ class TestCheckout:
         expected = 45
         assert expected == checkout_solution.checkout(skus)
 
+    def test_combo1(self):
+        skus = 'HHHHHHHHHH'
