@@ -33,4 +33,3 @@ class TestCheckout:
         skus = 'DEEEBB'
         expected = 15 + 3 * 40 + 30
         assert expected == checkout_solution.checkout(skus)
-
