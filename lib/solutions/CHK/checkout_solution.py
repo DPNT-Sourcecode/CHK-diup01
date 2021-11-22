@@ -59,12 +59,18 @@ def calc_price(sku: str, quantity: int) -> float:
     return price
 
 
+def extract_groups(quantities):
+    grouped
+
+
 def checkout(skus):
     if not valid_skus(skus):
         return -1
     quantities = {sku: skus.count(sku) for sku in skus}
     quantities = remove_freebies(quantities)
+    quantities, group_skus = extract_groups(quantities)
     total = sum(
         calc_price(sku, quantity) for sku, quantity in quantities.items())
     return total
+
 
