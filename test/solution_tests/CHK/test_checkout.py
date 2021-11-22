@@ -23,3 +23,14 @@ class TestCheckout:
 
     def test_invalid_skus(self):
         assert checkout_solution.valid_skus('invalid') == False
+
+    def test_freebie_offer_all_free(self):
+        skus = 'DEEEB'
+        expected = 15 + 3 * 40
+        assert expected == checkout_solution.checkout(skus)
+
+    def test_freebie_offer_not_all_free(self):
+        skus = 'DEEEBB'
+        expected = 15 + 3 * 40 + 30
+        assert expected == checkout_solution.checkout(skus)
+
