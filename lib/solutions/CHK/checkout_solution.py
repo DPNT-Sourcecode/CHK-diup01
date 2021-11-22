@@ -23,7 +23,8 @@ prices = {'A': [(5, 40), (3, 130 / 3), (1, 50)],
           'V': [(3, 130 / 3), (2, 45), (1, 50)],
           'W': [(1, 20)]
           }
-group = {'S': 20, 'T': 20, 'X': 17, 'Y': 20, 'Z': 21}
+group = ['S', 'T', 'X', 'Y', 'Z']
+group_unit_prices = [('X', 17), ('S', 20), ('T', 20), ('Y', 20), ('Z', 21)]
 group_multiple = 3
 group_price = 45
 freebies = {'E': 'B', 'N': 'M', 'R': 'Q'}
@@ -66,10 +67,10 @@ def extract_groups(skus):
 
 
 def calc_group_price(group_skus):
-    
-
     quantities = {sku: group_skus.count(sku) for sku in group_skus}
 
+    sorted_group_skus = dict(sorted(quantities.items(), key=lambda item:
+                             item[1]))
 
 
 
@@ -82,4 +83,5 @@ def checkout(skus):
     non_group_total = sum(
         calc_price(sku, quantity) for sku, quantity in quantities.items())
     group_total = calc_group_price(group_skus)
-    return non_group_total
+    return non_group_total + group_total
+
