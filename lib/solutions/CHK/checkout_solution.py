@@ -22,6 +22,7 @@ def remove_freebies(quantities):
               quantities}
     return result
 
+
 def checkout(skus):
     if not valid_skus(skus):
         return -1
@@ -38,6 +39,7 @@ def checkout(skus):
                                                                       0) for
                       sku in offer_multiples)
     return non_offer_total + offer_total
+
 
 
 
